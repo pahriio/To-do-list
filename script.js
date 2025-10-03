@@ -92,3 +92,17 @@ function renderTasks() {
         `;
         return;
     }
+
+        filteredTasks.forEach(task => {
+        const taskDiv = document.createElement('div');
+        taskDiv.classList.add('task');
+        taskDiv.style.cssText = 'display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #eee; gap: 10px;';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+        checkbox.addEventListener('change', () => {
+            task.completed = checkbox.checked;
+            saveTasks();
+            renderTasks();
+        });
