@@ -129,3 +129,51 @@ function renderTasks() {
         categorySpan.style.background = '#f0f0f0';
         categorySpan.style.padding = '2px 6px';
         categorySpan.style.borderRadius = '4px';
+
+                const dateSpan = document.createElement('span');
+        dateSpan.textContent = task.dueDate ? `Jatuh tempo: ${task.dueDate}` : 'Tidak ada tanggal';
+        dateSpan.style.fontSize = '12px';
+        dateSpan.style.color = task.dueDate === today ? 'red' : '#666';
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Hapus';
+        deleteBtn.style.background = 'red';
+        deleteBtn.style.color = 'white';
+        deleteBtn.style.border = 'none';
+        deleteBtn.style.padding = '4px 8px';
+        deleteBtn.style.borderRadius = '4px';
+        deleteBtn.style.cursor = 'pointer';
+        deleteBtn.addEventListener('click', () => {
+            if (confirm('Hapus tugas ini?')) {
+                tasks = tasks.filter(t => t.id !== task.id);
+                saveTasks();
+                renderTasks();
+            }
+        });
+
+        // Append elements to taskDiv
+        taskDiv.appendChild(checkbox);
+        taskDiv.appendChild(textSpan);
+        taskDiv.appendChild(prioritySpan);
+        taskDiv.appendChild(categorySpan);
+        taskDiv.appendChild(dateSpan);
+        taskDiv.appendChild(deleteBtn);
+
+        tasksContainer.appendChild(taskDiv);
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
+    renderTasks();
+
+    // Set default active filter button
+    const allButton = document.querySelector('.filters button');
+    if (allButton) {
+        allButton.classList.add('active');
+    }
+
+    // Set default date to today
+    dateInput.value = new Date().toISOString().split('T')[0];
+});
