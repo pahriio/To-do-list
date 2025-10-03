@@ -106,3 +106,26 @@ function renderTasks() {
             saveTasks();
             renderTasks();
         });
+
+                const textSpan = document.createElement('span');
+        textSpan.textContent = task.text;
+        textSpan.style.flex = '1';
+        if (task.completed) {
+            textSpan.style.textDecoration = 'line-through';
+            textSpan.style.opacity = '0.6';
+        }
+
+        const prioritySpan = document.createElement('span');
+        prioritySpan.textContent = `Prioritas: ${task.priority}`;
+        prioritySpan.style.fontSize = '12px';
+        prioritySpan.style.color = task.priority === 'Urgent' ? 'red' : task.priority === 'Medium' ? 'orange' : 'green';
+        prioritySpan.style.background = '#f0f0f0';
+        prioritySpan.style.padding = '2px 6px';
+        prioritySpan.style.borderRadius = '4px';
+
+        const categorySpan = document.createElement('span');
+        categorySpan.textContent = `Kategori: ${task.category}`;
+        categorySpan.style.fontSize = '12px';
+        categorySpan.style.background = '#f0f0f0';
+        categorySpan.style.padding = '2px 6px';
+        categorySpan.style.borderRadius = '4px';
