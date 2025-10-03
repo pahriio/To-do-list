@@ -44,3 +44,51 @@ addButton.addEventListener('click', () => {
     categorySelect.value = 'Pekerjaan';
     dateInput.value = '';
 });
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        renderTasks();
+    });
+});
+
+deleteButton.addEventListener('click', () => {
+    if (confirm('Hapus semua tugas yang sudah selesai?')) {
+        tasks = tasks.filter(task => !task.completed);
+        saveTasks();
+        renderTasks();
+    }
+});
+
+function renderTasks() {
+    tasksContainer.innerHTML = '';
+
+        let filteredTasks = tasks;
+    const today = new Date().toISOString().split('T')[0];
+
+    switch (currentFilter) {
+        case 'Semua':
+            filteredTasks = tasks;
+            break;
+        case 'Aktif':
+            filteredTasks = tasks.filter(task => !task.completed);
+            break;
+        case 'Hari Ini':
+            filteredTasks = tasks.filter(task => task.dueDate === today);
+            break;
+        case 'Prioritas Tinggi':
+            filteredTasks = tasks.filter(task => task.priority === 'Urgent');
+            break;
+        default:
+            filteredTasks = tasks;
+    }
+
+        if (filteredTasks.length === 0) {
+        // Show no tasks message
+        tasksContainer.innerHTML = `
+            <p>Tidak memiliki tugas</p>
+            <small>Tambahkan tugas baru</small>
+        `;
+        return;
+    }
