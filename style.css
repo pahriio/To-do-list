@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    }
+
+.container {
+    background: white;
+    width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    }
+
+.header {
+    background: linear-gradient(to right, #4f46e5, #06b6d4);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    }
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    }
+
+.header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    }
+
+input {
+    height: 35px;
+}
+
+.form {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    }
+
+.form input[type="text"],
+    .form select,
+    .form input[type="date"] {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    }
+
+.form button {
+    grid-column: span 3;
+    padding: 12px;
+    background: linear-gradient(to right, #00d2ff, #3a7bd5);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    }
+
+    .form button:hover {
+    opacity: 0.9;
+    }
+
+.filters {
+    padding: 15px;
+    margin-left: 20px;
+    border-top: 1px solid #eee;
+    gap: 20px;
+}
+
+.filters button {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    cursor: pointer;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.1);
+    /* color: #fff; */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.filters button:hover{
+    background-color: skyblue;
+}
+
+.filters button:active{
+    background-color: skyblue;
+}
+
+.filters .delete {
+    margin-left: 100px;
+}
+
+.filters .delete:hover{
+    background-color: red;
+}
+
+.filters .delete:active {
+    background-color: red;
+}
+
+.tasks {
+    margin-top: 11px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+}
