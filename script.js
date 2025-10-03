@@ -33,3 +33,14 @@ addButton.addEventListener('click', () => {
         dueDate: dueDate,
         completed: false
     };
+
+
+        tasks.unshift(newTask);
+    saveTasks();
+    renderTasks();
+
+        textInput.value = '';
+    prioritySelect.value = 'Normal';
+    categorySelect.value = 'Pekerjaan';
+    dateInput.value = '';
+});
